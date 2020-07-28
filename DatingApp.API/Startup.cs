@@ -31,6 +31,10 @@ namespace DatingApp.API
                 (Configuration.GetConnectionString("DefaultConnection"))); // הוספה של הדאטא שבנינו והחיבור שלו לדאטאבייס שנבנה
             services.AddControllers();
             services.AddCors();// מוסיף את הקורס שגורם לאתר שלי לזהות את האנגור והקור כעובדים משותפים
+            services.AddScoped<IAuthRepository, AuthRepository>(); //הסרבר נוצר פעם אחת פר בקשה
+            // שורה למעלה - עושה אינג'קט לאי רפוזטורי כדי שנשתמש בפעולות שלו ואחרי הפסיק שמים את הרפוזטורי שבו יש מימוש של הפעולת
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
