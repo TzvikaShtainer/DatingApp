@@ -19,6 +19,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using AutoMapper;
 
 namespace DatingApp.API
 {
@@ -36,9 +37,15 @@ namespace DatingApp.API
         {
             services.AddDbContext<DataContext>(x => x.UseSqlite
                 (Configuration.GetConnectionString("DefaultConnection"))); // הוספה של הדאטא שבנינו והחיבור שלו לדאטאבייס שנבנה
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(opt => 
+            {
+                opt.SerializerSettings.ReferenceLoopHandling = 
+                Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            }); //מתעלם מהשגיעת מירורינג של גייסון
             services.AddCors();// מוסיף את הקורס שגורם לאתר שלי לזהות את האנגור והקור כעובדים משותפים
+            services.AddAutoMapper(typeof(DatingRepository).Assembly);
             services.AddScoped<IAuthRepository, AuthRepository>(); //הסרבר נוצר פעם אחת פר בקשה
+            services.AddScoped<IDatingRepository, DatingRepository>();
             // שורה למעלה - עושה אינג'קט לאי רפוזטורי כדי שנשתמש בפעולות שלו ואחרי הפסיק שמים את הרפוזטורי שבו יש מימוש של הפעולת
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

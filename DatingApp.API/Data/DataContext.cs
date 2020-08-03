@@ -10,5 +10,6 @@ namespace DatingApp.API.Data
 
         public DbSet<Value> Values { get; set; } // משתנה לדאטא של ווליוז
         public DbSet<User> Users { get; set; }
+        public DbSet<Photo> Photos { get; set; }
     }
 }
