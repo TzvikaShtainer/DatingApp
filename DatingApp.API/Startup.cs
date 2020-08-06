@@ -43,6 +43,7 @@ namespace DatingApp.API
                 Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             }); //מתעלם מהשגיעת מירורינג של גייסון
             services.AddCors();// מוסיף את הקורס שגורם לאתר שלי לזהות את האנגור והקור כעובדים משותפים
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings")); // עושה שהמחלקה של הקלאוד תקבל את המידע מהאפ סטינגס
             services.AddAutoMapper(typeof(DatingRepository).Assembly);
             services.AddScoped<IAuthRepository, AuthRepository>(); //הסרבר נוצר פעם אחת פר בקשה
             services.AddScoped<IDatingRepository, DatingRepository>();

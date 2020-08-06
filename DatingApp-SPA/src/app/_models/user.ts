@@ -1,4 +1,4 @@
-import { photo } from "./Photo";
+import { photo } from './photo';
 
 export interface User {
     id: number;
