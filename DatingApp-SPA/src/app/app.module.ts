@@ -8,6 +8,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { RouterModule } from '@angular/router';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 //import { NgxGalleryModule } from 'ngx-gallery';
+import { TimeagoModule } from 'ngx-timeago';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -60,6 +61,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
       FormsModule,
       ReactiveFormsModule,
       BrowserAnimationsModule,
+      TimeagoModule.forRoot(),
       BsDropdownModule.forRoot(),
       BsDatepickerModule.forRoot(),
       TabsModule.forRoot(),
